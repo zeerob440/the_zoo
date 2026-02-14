@@ -1,4 +1,8 @@
 body {
     background-color: tan;
-    color: darkolivegreen;  
+    color: darkolivegreen; 
+    background-image: url('../images/zoo_background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
