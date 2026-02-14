@@ -1,15 +1,27 @@
 body {
     background-color: tan;
-    color: darkolivegreen; 
+    color: darkgreen; 
     background-image: url('../images/zoo_background.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding: 15px; 
 }
 
 form {
     margin: 0 auto;
     align-items: center;
+    background-image: url('../images/tiger_stripe.png');
+    background-position: center;
+    background-repeat: no-repeat;
     width: 300px;
+    border: 1px solid darkgreen; 
+    max-width: 900px; 
+    max-height: 900px;
+    padding: 10px;
+    font-weight: bold;
+    color: darkolivegreen;
+    font-size: 22px;
 }
