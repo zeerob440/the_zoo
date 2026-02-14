@@ -1,4 +1,5 @@
 from django import forms
+#creates form for user login at zoo_entrance
 
 class userLoginForm(forms.Form):
     username = forms.CharField(
