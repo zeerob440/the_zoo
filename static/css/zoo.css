@@ -4,10 +4,10 @@ body {
     background-image: url('../images/zoo_background.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
 }
 
 form {
-    align-items: center;
-    margin: 0 auto;
+    width: 300px;
 }
