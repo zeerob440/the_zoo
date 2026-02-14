@@ -26,11 +26,22 @@
 	<main>
 			<p>FIXME: SITE USER LOGIN PAGE, ADD FUNCTIONING LOGIN FORM</p>
 
+	<!-- link django login form to index.html-->
+	<form method = 'Post'>
+	 	{% csrf_token %}
+	 	{{form.as_p}}
+	 	<button type="submit">Login/Create</button>
+	</form>
+
+	
+   <!-- comment out old form to test if new form renders. 
 	<form action="/your-name/" method="post">
     	<label for="user_name">Enter your name: </label>
     	<input id="user_name" type="text" name="user_name" value="{{ current_name }}">
     	<input type="submit" value="OK">
 	</form>
+	-->
+	
 		</section>
 		<!-- It is useful to nest <section> inside <div> for 
 		style diversity on a site.-->
