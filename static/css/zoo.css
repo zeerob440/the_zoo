@@ -9,5 +9,7 @@ body {
 }
 
 form {
+    margin: 0 auto;
+    align-items: center;
     width: 300px;
 }
