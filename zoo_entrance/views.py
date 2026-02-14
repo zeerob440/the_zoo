@@ -31,6 +31,14 @@ def index(request):
 
     return render(request, 'zoo_entrance/index.html', {'form': form})
 
+def zoo_home(request):
+    user_id = request.session.get('user_id')
+
+    if not user_id:
+        return redirect('zoo_entrance:index')
     
+    user = ZooUser.objects.get(id= user_id)
+
+    return render(request, 'zoo_entrance/home.html', {'user': user})
+
     
-    #return render(request, 'zoo_entrance/index.html')
