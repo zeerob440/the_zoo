@@ -8,3 +8,12 @@ class ZooUser(models.Model):
 
     def __str__(self):
         return self.username
+
+
+# animal model
+class Zoo(models.Model):
+    zoo_name = models.CharField(max_length = 25, unique = True)
+
+    def __str__(self):
+        return self.zoo_name
+
