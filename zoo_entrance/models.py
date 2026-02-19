@@ -8,21 +8,12 @@ class ZooUser(models.Model):
     username = models.CharField(max_length = 25, unique = True)
     # we are forgoing password for now to limit complexity
     # password = models.CharField(max_length = 25)
-    owned_zoos = models.TextField()
 
     # METHODS
     def __str__(self):
         return f"{self.username} is the current user."
     
-    def list_zoos(self):
-        pass
     
-    def add_zoo(self):
-        pass
-
-    def remove_zoo(self):
-        pass
-
 
 # ZOO MODEL
 class Zoo(models.Model):
@@ -31,21 +22,12 @@ class Zoo(models.Model):
     zoo_name = models.CharField(max_length = 25, unique = True)
     # potential attribute for making a public zoos page for everyone to see
     # public = models.BooleanField()
-    owned_animals = models.TextField()
 
 
     # METHODS
     def __str__(self):
         return f"{self.zoo_name} is owned by {self.zoo_user}."
     
-    def list_animals(self):
-        pass
-    
-    def add_animal(self):
-        pass
-
-    def remove_animal(self):
-        pass
 
 
 # ANIMAL MODEL
