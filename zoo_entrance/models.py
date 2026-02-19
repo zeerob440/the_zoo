@@ -29,6 +29,8 @@ class Zoo(models.Model):
     # ATTRIBUTES
     zoo_user = models.ForeignKey(ZooUser, on_delete=models.CASCADE)
     zoo_name = models.CharField(max_length = 25, unique = True)
+    # potential attribute for making a public zoos page for everyone to see
+    # public = models.BooleanField()
     owned_animals = models.TextField()
 
 
