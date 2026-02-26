@@ -1,0 +1,8 @@
+{% extends 'zoo_entrance/home.html' %}
+
+{% block content %}
+    {% for zoo in zoos %}
+        {{ zoo }}
+        <p>this is where the zoos will go!</p>
+    {% endfor %}
+{% endblock %}

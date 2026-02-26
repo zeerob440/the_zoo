@@ -1,6 +1,9 @@
 from .forms import userLoginForm
-from . models import ZooUser
 from django.shortcuts import render, redirect
+# data models below
+from . models import ZooUser
+from .models import Zoo
+from .models import ZooAnimal
 
 # Create your views here.
 
@@ -40,5 +43,11 @@ def zoo_home(request):
     user = ZooUser.objects.get(id= user_id)
 
     return render(request, 'zoo_entrance/home.html', {'user': user})
+
+
+def zoo_list(request):
+    #zoos = Zoo.objects.filter('zoo_user') #== request.session['user_id'])
+    zoos = [1,2,3]
+    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
 
     
