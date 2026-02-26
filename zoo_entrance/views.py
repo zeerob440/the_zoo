@@ -42,12 +42,17 @@ def zoo_home(request):
     
     user = ZooUser.objects.get(id= user_id)
 
-    return render(request, 'zoo_entrance/home.html', {'user': user})
+    zoos = Zoo.objects.all() 
+    #zoos = [1,2,3]
+    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
 
+    #return render(request, 'zoo_entrance/home.html', {'user': user})
 
+"""
+# we commented this block out because we want to consolidate the zoo list to home.html
 def zoo_list(request):
     zoos = Zoo.objects.all() #== request.session['user_id'])
     #zoos = [1,2,3]
     return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
-
+"""
     

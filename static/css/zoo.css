@@ -25,3 +25,7 @@ form {
     color: darkolivegreen;
     font-size: 22px;
 }
+
+.content {
+    background: black;
+}

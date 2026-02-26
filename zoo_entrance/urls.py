@@ -6,5 +6,5 @@ app_name = 'zoo_entrance'
 urlpatterns = [
     path('', views.index, name='index'),
     path("home/", views.zoo_home, name='zoo_home'),
-    path("zoo_list/", views.zoo_list, name='zoo_list'),
+    #path("zoo_list/", views.zoo_list, name='zoo_list'), # commented out because we are rendering zoo list in home.html now
 ]
