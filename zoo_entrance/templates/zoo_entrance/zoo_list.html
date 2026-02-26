@@ -3,6 +3,7 @@
 {% block content %}
     {% for zoo in zoos %}
         {{ zoo }}
-        <p>this is where the zoos will go!</p>
+        <p>This zoo's user is {{ zoo.zoo_user}}</p>
+        <p>This zoo's name is {{ zoo.zoo_name }}</p>
     {% endfor %}
 {% endblock %}

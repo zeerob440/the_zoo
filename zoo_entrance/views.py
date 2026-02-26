@@ -46,8 +46,8 @@ def zoo_home(request):
 
 
 def zoo_list(request):
-    #zoos = Zoo.objects.filter('zoo_user') #== request.session['user_id'])
-    zoos = [1,2,3]
+    zoos = Zoo.objects.all() #== request.session['user_id'])
+    #zoos = [1,2,3]
     return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
 
     
