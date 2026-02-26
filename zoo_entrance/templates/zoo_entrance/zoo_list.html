@@ -1,9 +1,12 @@
 {% extends 'zoo_entrance/home.html' %}
 
-{% block content %}
+{% block zoo_content %}
     {% for zoo in zoos %}
         {{ zoo }}
         <p class="content">This zoo's user is {{ zoo.zoo_user}}</p>
-        <p>This zoo's name is {{ zoo.zoo_name }}</p>
+        <p>This zoo's name is {{ zoo.zoo_name }}</p> 
+        {% for animal in animals %}
+        <p>{{ animal.nickname }} is a {{animal.species}} that eats {{animal.food}}</p>
+        {% endfor %}
     {% endfor %}
 {% endblock %}

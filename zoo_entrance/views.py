@@ -44,8 +44,11 @@ def zoo_home(request):
 
     zoos = Zoo.objects.all() 
     #zoos = [1,2,3]
-    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
-
+    animals = ZooAnimal.objects.all()
+    #animals = [1,2,3,4]
+    # all values being passed must be in the SAME dictionary as different key value pairs
+    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos,'animals':animals})
+    
     #return render(request, 'zoo_entrance/home.html', {'user': user})
 
 """
