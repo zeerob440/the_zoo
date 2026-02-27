@@ -1,6 +1,6 @@
 {% extends 'zoo_entrance/home.html' %}
 
-{% block zoo_content %}
+{% block content %}
     {% for zoo in zoos %}
         {{ zoo }}
         <p class="content">This zoo's user is {{ zoo.zoo_user}}</p>
