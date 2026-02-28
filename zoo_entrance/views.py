@@ -110,8 +110,11 @@ def zoo_edit(request, pk):
             zoo.save()
             return redirect('zoo_entrance:zoo_detail', pk=zoo.pk)
     else:
+        # test render of user in zoo_detail
+        user_id = request.session.get('user_id')
+        user = ZooUser.objects.get(id=user_id)
         form = ZooForm(instance=zoo)
-    return render(request, 'zoo_entrance/zoo_edit.html', {'form': form})
+    return render(request, 'zoo_entrance/zoo_edit.html', {'form': form, 'user': user})
 
 
 def animal_detail(request, pk):
