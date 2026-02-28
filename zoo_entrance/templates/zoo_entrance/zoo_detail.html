@@ -11,7 +11,7 @@
     <h3>Zoo Animals:</h3>
     {% for animal in animals %}
         <div class="animal_list">
-            <h4><a href="{% url 'zoo_entrance:animal_detail' pk=animal.id %}">{{ animal }}</a></h4>
+            <h4><a href="{% url 'zoo_entrance:animal_detail' pk=animal.pk %}">{{ animal }}</a></h4>
             {{animal.nickname}} is a {{animal.species}} that eats {{animal.food}}
         </div>
     {% endfor %}

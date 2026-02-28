@@ -55,7 +55,7 @@ def zoo_home(request):
 
 def zoo_detail(request, pk):
     zoo = get_object_or_404(Zoo, pk=pk)
-    animals = ZooAnimal.objects.all()
+    animals = ZooAnimal.objects.filter(pk=zoo.pk)
     return render(request, 'zoo_entrance/zoo_detail.html', {'zoo': zoo, 'animals': animals})
 
 
@@ -73,15 +73,13 @@ def zoo_new(request):
         form = ZooForm()
     return render(request, 'zoo_entrance/zoo_edit.html', {'form': form})
 
+
 def zoo_edit(request, pk):
     zoo = get_object_or_404(Zoo, pk=pk)
     if request.method == "POST":
         form = ZooForm(request.POST, instance=zoo)
         if form.is_valid():
             zoo = form.save(commit=False)
-            # use the following line when we get login working and then remove the zoo.zoo_user=testuser line
-            #zoo.zoo_user = request.user
-            zoo.zoo_user = ZooUser.objects.get(username='testuser')
             zoo.save()
             return redirect('zoo_entrance:zoo_detail', pk=zoo.pk)
     else:
@@ -91,7 +89,7 @@ def zoo_edit(request, pk):
 
 def animal_detail(request, pk):
     animal = get_object_or_404(ZooAnimal, pk=pk)
-    return render(request, 'zoo_entrance/zoo_detail.html', {'animal': animal})
+    return render(request, 'zoo_entrance/animal_detail.html', {'animal': animal})
 
 
 def animal_new(request, pk):
@@ -104,4 +102,17 @@ def animal_new(request, pk):
             return redirect('zoo_entrance:animal_detail', pk=animal.pk)
     else:
         form = AnimalForm()
+    return render(request, 'zoo_entrance/animal_edit.html', {'form': form})
+
+
+def animal_edit(request, pk):
+    animal = get_object_or_404(ZooAnimal, pk=pk)
+    if request.method == "POST":
+        form = AnimalForm(request.POST, instance=animal)
+        if form.is_valid():
+            zoo = form.save(commit=False)
+            zoo.save()
+            return redirect('zoo_entrance:animal_detail', pk=animal.pk)
+    else:
+        form = AnimalForm(instance=animal)
     return render(request, 'zoo_entrance/animal_edit.html', {'form': form})
