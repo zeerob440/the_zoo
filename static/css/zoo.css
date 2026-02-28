@@ -48,4 +48,12 @@ a:hover {
     color: white;
 }
 
+button {
+    background-color: #47E307;
+    color: #ffffff;
+    border-radius: 15px 0 15px;
+}
 
+button:hover {
+    background-color: darkcyan;
+}
