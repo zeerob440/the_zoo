@@ -1,5 +1,5 @@
 from .forms import userLoginForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # data models below
 from . models import ZooUser
 from .models import Zoo
@@ -42,7 +42,7 @@ def zoo_home(request):
     
     user = ZooUser.objects.get(id= user_id)
 
-    zoos = Zoo.objects.all() 
+    zoos = Zoo.objects.filter(zoo_user = 2)
     #zoos = [1,2,3]
     animals = ZooAnimal.objects.all()
     #animals = [1,2,3,4]
@@ -50,6 +50,13 @@ def zoo_home(request):
     return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos,'animals':animals})
     
     #return render(request, 'zoo_entrance/home.html', {'user': user})
+
+
+def zoo_detail(request, pk):
+    zoo = get_object_or_404(Zoo, pk=pk)
+    animals = ZooAnimal.objects.all()
+    return render(request, 'zoo_entrance/zoo_detail.html', {'zoo': zoo, 'animals': animals})
+
 
 """
 # we commented this block out because we want to consolidate the zoo list to home.html

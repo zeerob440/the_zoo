@@ -11,7 +11,7 @@ class ZooUser(models.Model):
 
     # METHODS
     def __str__(self):
-        return f"{self.username} is the current user."
+        return f"{self.username}"
     
     
 
@@ -26,7 +26,7 @@ class Zoo(models.Model):
 
     # METHODS
     def __str__(self):
-        return f"{self.zoo_name} is owned by {self.zoo_user}."
+        return f"{self.zoo_name}"
     
 
 
@@ -41,7 +41,7 @@ class ZooAnimal(models.Model):
 
     # METHODS
     def __str__(self):
-        return f"{self.nickname} is a {self.species} in {self.zoo}."
+        return f"{self.nickname}"
     
     def feed(self):
         pass

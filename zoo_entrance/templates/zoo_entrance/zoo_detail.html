@@ -1,0 +1,12 @@
+{% extends 'zoo_entrance/home.html' %}
+
+{% block content %}
+    {% for animal in animals %}
+    {{animal.zoo}}
+        <aside class="actions">
+            <a class="btn btn-secondary" href="">
+                {% include './icons/pencil-fill.svg' %}
+            </a>
+        </aside>
+    {% endfor %}
+{% endblock %}

@@ -2,11 +2,14 @@
 
 {% block content %}
     {% for zoo in zoos %}
-        {{ zoo }}
+        <h2><a href="{% url 'zoo_entrance:zoo_detail' pk=zoo.pk %}">{{ zoo }}</a></h2>
         <p class="content">This zoo's user is {{ zoo.zoo_user}}</p>
         <p>This zoo's name is {{ zoo.zoo_name }}</p> 
+        <h3>Animals:</h3>
         {% for animal in animals %}
-        <p>{{ animal.nickname }} is a {{animal.species}} that eats {{animal.food}}</p>
+            {% if animal.zoo == zoo %}
+                <p>{{ animal.nickname }} is a {{animal.species}} that eats {{animal.food}}</p>
+            {% endif %}
         {% endfor %}
     {% endfor %}
 {% endblock %}
