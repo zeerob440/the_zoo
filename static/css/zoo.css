@@ -27,5 +27,10 @@ form {
 }
 
 .content {
-    background: rgb(0, 0, 0);
+    background-image: url('../images/bamboo2.png');
+    font-weight: bold;
+    color: white;
+    font-size: 1.5em;
 }
+
+
