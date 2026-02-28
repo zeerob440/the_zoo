@@ -148,4 +148,7 @@ def animal_edit(request, pk):
             return redirect('zoo_entrance:animal_detail', pk=animal.pk)
     else:
         form = AnimalForm(instance=animal)
-    return render(request, 'zoo_entrance/animal_edit.html', {'form': form})
+        # render user in animal_edit()
+        user_id = request.session.get('user_id')
+    user = ZooUser.objects.get(id=user_id)
+    return render(request, 'zoo_entrance/animal_edit.html', {'form': form, 'user' : user})
