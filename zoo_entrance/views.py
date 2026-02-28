@@ -42,10 +42,15 @@ def zoo_home(request):
     user = ZooUser.objects.get(id= user_id)
 
     # remove the following all() statement and use the filter below when we get login working
-    zoos = Zoo.objects.all()
+    # testing zoos = Zoo.objects.filter(zoo_user=user) to prevent any user for seeing all zoo that exist in the database
+    zoos = Zoo.objects.filter(zoo_user=user)
     #zoos = Zoo.objects.filter(zoo_user = request.user)
     #zoos = [1,2,3]
-    animals = ZooAnimal.objects.all()
+    '''
+    Django ORM dunder to follow a relationship in this case ZooUser > zoo field > check zoo_user
+    so find animals where the animal's zoo's zoo_user is the current user. 
+    '''
+    animals = ZooAnimal.objects.filter(zoo__zoo_user=user)
     #animals = [1,2,3,4]
     # all values being passed must be in the SAME dictionary as different key value pairs
     return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos,'animals':animals})
