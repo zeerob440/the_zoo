@@ -134,8 +134,11 @@ def animal_new(request, pk):
             animal.save()
             return redirect('zoo_entrance:animal_detail', pk=animal.pk)
     else:
+        user_id = request.session.get('user_id')
+        #render user in animal_new()
+        user = ZooUser.objects.get(id=user_id)
         form = AnimalForm()
-    return render(request, 'zoo_entrance/animal_edit.html', {'form': form})
+    return render(request, 'zoo_entrance/animal_edit.html', {'form': form, 'user': user})
 
 
 def animal_edit(request, pk):
@@ -145,10 +148,10 @@ def animal_edit(request, pk):
         if form.is_valid():
             zoo = form.save(commit=False)
             zoo.save()
-            return redirect('zoo_entrance:animal_detail', pk=animal.pk)
+            return redirect('zoo_entrance:animal_detail', pk=animal.pk) 
     else:
         form = AnimalForm(instance=animal)
         # render user in animal_edit()
         user_id = request.session.get('user_id')
-    user = ZooUser.objects.get(id=user_id)
+        user = ZooUser.objects.get(id=user_id)
     return render(request, 'zoo_entrance/animal_edit.html', {'form': form, 'user' : user})
