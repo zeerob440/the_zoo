@@ -1,12 +1,18 @@
 {% extends 'zoo_entrance/home.html' %}
 
 {% block content %}
+    <h2>{{zoo.zoo_name}}</h2>
+    <h4><a href="{% url 'zoo_entrance:zoo_edit' pk=zoo.pk %}">Edit this zoo?</a></h4>
+    <h4><a href="{% url 'zoo_entrance:animal_new' pk=zoo.pk %}">Add a new animal?</a></h4>
+    <h3>Zoo Information:</h3>
+    <p>This zoo's name is {{zoo.zoo_name}}.</p>
+    <p>This zoo's owner is {{zoo.zoo_user}}.</p>
+    <p>This zoo's location is {{zoo.zoo_location}}.</p>
+    <h3>Zoo Animals:</h3>
     {% for animal in animals %}
-    {{animal.zoo}}
-        <aside class="actions">
-            <a class="btn btn-secondary" href="">
-                {% include './icons/pencil-fill.svg' %}
-            </a>
-        </aside>
+        <div class="animal_list">
+            <h4><a href="{% url 'zoo_entrance:animal_detail' pk=animal.id %}">{{ animal }}</a></h4>
+            {{animal.nickname}} is a {{animal.species}} that eats {{animal.food}}
+        </div>
     {% endfor %}
 {% endblock %}

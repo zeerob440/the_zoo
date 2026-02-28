@@ -1,9 +1,8 @@
-from .forms import userLoginForm
+from .forms import userLoginForm, ZooForm, AnimalForm
 from django.shortcuts import render, redirect, get_object_or_404
 # data models below
-from . models import ZooUser
-from .models import Zoo
-from .models import ZooAnimal
+from .models import ZooUser, Zoo, ZooAnimal
+
 
 # Create your views here.
 
@@ -42,7 +41,9 @@ def zoo_home(request):
     
     user = ZooUser.objects.get(id= user_id)
 
-    zoos = Zoo.objects.filter(zoo_user = 2)
+    # remove the following all() statement and use the filter below when we get login working
+    zoos = Zoo.objects.all()
+    #zoos = Zoo.objects.filter(zoo_user = request.user)
     #zoos = [1,2,3]
     animals = ZooAnimal.objects.all()
     #animals = [1,2,3,4]
@@ -58,11 +59,49 @@ def zoo_detail(request, pk):
     return render(request, 'zoo_entrance/zoo_detail.html', {'zoo': zoo, 'animals': animals})
 
 
-"""
-# we commented this block out because we want to consolidate the zoo list to home.html
-def zoo_list(request):
-    zoos = Zoo.objects.all() #== request.session['user_id'])
-    #zoos = [1,2,3]
-    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos})
-"""
-    
+def zoo_new(request):
+    if request.method == "POST":
+        form = ZooForm(request.POST)
+        if form.is_valid():
+            zoo = form.save(commit=False)
+            # use the following line when we get login working and then remove the zoo.zoo_user=testuser line
+            #zoo.zoo_user = request.user
+            zoo.zoo_user = ZooUser.objects.get(username='testuser')
+            zoo.save()
+            return redirect('zoo_entrance:zoo_detail', pk=zoo.pk)
+    else:
+        form = ZooForm()
+    return render(request, 'zoo_entrance/zoo_edit.html', {'form': form})
+
+def zoo_edit(request, pk):
+    zoo = get_object_or_404(Zoo, pk=pk)
+    if request.method == "POST":
+        form = ZooForm(request.POST, instance=zoo)
+        if form.is_valid():
+            zoo = form.save(commit=False)
+            # use the following line when we get login working and then remove the zoo.zoo_user=testuser line
+            #zoo.zoo_user = request.user
+            zoo.zoo_user = ZooUser.objects.get(username='testuser')
+            zoo.save()
+            return redirect('zoo_entrance:zoo_detail', pk=zoo.pk)
+    else:
+        form = ZooForm(instance=zoo)
+    return render(request, 'zoo_entrance/zoo_edit.html', {'form': form})
+
+
+def animal_detail(request, pk):
+    animal = get_object_or_404(ZooAnimal, pk=pk)
+    return render(request, 'zoo_entrance/zoo_detail.html', {'animal': animal})
+
+
+def animal_new(request, pk):
+    if request.method == "POST":
+        form = AnimalForm(request.POST)
+        if form.is_valid():
+            animal = form.save(commit=False)
+            animal.zoo = Zoo.objects.get(id=pk)
+            animal.save()
+            return redirect('zoo_entrance:animal_detail', pk=animal.pk)
+    else:
+        form = AnimalForm()
+    return render(request, 'zoo_entrance/animal_edit.html', {'form': form})

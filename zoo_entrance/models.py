@@ -20,9 +20,9 @@ class Zoo(models.Model):
     # ATTRIBUTES
     zoo_user = models.ForeignKey(ZooUser, on_delete=models.CASCADE)
     zoo_name = models.CharField(max_length = 25, unique = True)
+    zoo_location = models.CharField(max_length=25, default='Indianapolis')
     # potential attribute for making a public zoos page for everyone to see
-    # public = models.BooleanField()
-
+    public = models.BooleanField(default=False)
 
     # METHODS
     def __str__(self):
