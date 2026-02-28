@@ -53,7 +53,8 @@ def zoo_home(request):
     animals = ZooAnimal.objects.filter(zoo__zoo_user=user)
     #animals = [1,2,3,4]
     # all values being passed must be in the SAME dictionary as different key value pairs
-    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos,'animals':animals})
+    # pass user into zoo_home render, test to see if it returns the user's name in the <h2> element in home.html
+    return render(request, 'zoo_entrance/zoo_list.html', {'zoos': zoos,'animals':animals, 'user' : user})
     
     #return render(request, 'zoo_entrance/home.html', {'user': user})
 
