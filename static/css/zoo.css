@@ -49,11 +49,12 @@ a:hover {
 }
 
 button {
-    background-color: #47E307;
+    background-color:darkolivegreen;
     color: #ffffff;
     border-radius: 15px 0 15px;
+    font-size: 1.3em
 }
 
 button:hover {
-    background-color: darkcyan;
+    background-color: olivedrab;
 }
