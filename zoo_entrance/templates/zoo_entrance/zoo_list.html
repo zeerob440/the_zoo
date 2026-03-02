@@ -1,0 +1,16 @@
+{% extends 'zoo_entrance/home.html' %}
+
+{% block content %}
+    <h2>Your current zoos are listed below:</h2>
+    <h3><a href="{% url 'zoo_entrance:zoo_new' %}">Add a new zoo?</a></h3>
+    {% for zoo in zoos %}
+        <h2><a href="{% url 'zoo_entrance:zoo_detail' pk=zoo.pk %}">{{ zoo }}</a></h2>
+        <div>{{zoo.zoo_name}} is located in {{zoo.zoo_location}} and owned by {{zoo.zoo_user}}.</div>
+        <h3>Animals:</h3>
+        {% for animal in animals %}
+            {% if animal.zoo == zoo %}
+                <p>{{ animal.nickname }} is a {{animal.species}} that eats {{animal.food}}.</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

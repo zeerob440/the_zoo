@@ -1,0 +1,10 @@
+{% extends 'zoo_entrance/home.html' %}
+
+{% block content %}
+    <h2>{{animal.nickname}}</h2>
+    <h4><a href="{% url 'zoo_entrance:animal_edit' pk=animal.pk %}">Edit this animal?</a></h4>
+    <h3>Animal Information:</h3>
+    <p>This animal's name is {{animal.nickname}}.</p>
+    <p>This animal's species is {{animal.species}}.</p>
+    <p>This animals's preferred food is {{animal.food}}.</p>
+{% endblock %}

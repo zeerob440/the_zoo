@@ -1,0 +1,9 @@
+{% extends 'zoo_entrance/home.html' %}
+
+{% block content %}
+    <h2>New Animal</h2>
+    <form method="POST" class="animal-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Save</button>
+    </form>
+{% endblock %}

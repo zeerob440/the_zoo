@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang= "en">
 <head>
@@ -8,21 +9,28 @@
 	<meta name="description" content="enter SEO page description here.">
 	<link rel="icon" type="image/png" href="filepath/to/image/here">
 	<!--Above is code for favicon to displays in tab-->
-	<link rel="stylesheet" href="{FIXME}">
+	<link rel="stylesheet" href="{% static 'css/zoo.css' %}">
 	<script src ="enterScrpit.js"></script>
 	<!--link JavaScript here if needed, defer is helpful here.-->
 </head>
 
 <body>
 	<header>
-	<h1>Your Zoo<h1>
-    </header>
-        <h1>Welcome to your zoo {{user.username}}!</h1>
+		<h1><a href="{% url 'zoo_entrance:zoo_home' %}">Your Zoo Homepage</a><h1>
+		<h2>Welcome to your zoo management interface, {{user.username}}!</h2>
 		<p>Populate your zoo with your favorite animals!</p>
+    </header>
+
+	
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+
+
+
 </body>
-
-
-
 
 
 </html>
