@@ -99,7 +99,7 @@ def zoo_new(request):
            return redirect('zoo_entrance:zoo_detail', pk=zoo.pk) 
     else:
         form = ZooForm()
-    return render(request, 'zoo_entrance/zoo_edit.html', {'form' : form})
+    return render(request, 'zoo_entrance/zoo_edit.html', {'form' : form, 'user': user})
 
 def zoo_edit(request, pk):
     zoo = get_object_or_404(Zoo, pk=pk)
