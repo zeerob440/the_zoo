@@ -26,6 +26,15 @@ form {
     font-size: 22px;
 }
 
+p, a, h1, h2, h3, div {
+    text-shadow: -.5px -.5px 0 rgb(10, 17, 40),
+    .5px -.5px 0 rgb(10, 17, 40),
+    -.5px  .5px 0 rgb(10, 17, 40),
+    .5px  .5px 0 rgb(10, 17, 40);
+}
+
+
+
 .content {
     background-image: url('../images/bamboo2.png');
     font-weight: bold;
